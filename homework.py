@@ -12,7 +12,11 @@ class Mentor:
         self.name = name
         self.surname = surname
         self.courses_attached = []
-        
+ 
+class Lecturer(Mentor):
+    pass
+
+class Reviewer(Mentor):
     def rate_hw(self, student, course, grade):
         if isinstance(student, Student) and course in self.courses_attached and course in student.courses_in_progress:
             if course in student.grades:
@@ -21,12 +25,6 @@ class Mentor:
                 student.grades[course] = [grade]
         else:
             return 'Ошибка'
- 
-class Lecturer(Mentor):
-    pass
-
-class Reviewer(Mentor):
-    pass
 
 best_student = Student('Ruoy', 'Eman', 'your_gender')
 best_student.courses_in_progress += ['Python']
