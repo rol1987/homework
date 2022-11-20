@@ -15,6 +15,9 @@ class Student:
                 lecturer.grades[course] = [grade]
         else:
             return 'Ошибка'
+    
+    def __str__(self):
+        return (f"Имя: {self.name}\nФамилия: {self.surname}")
         
 class Mentor:
     def __init__(self, name, surname):
@@ -35,16 +38,15 @@ class Reviewer(Mentor):
         else:
             return 'Ошибка'
 
-best_student = Student('Иван', 'Иванович', 'М')
-best_student.courses_in_progress += ['Excel']
-best_student.courses_in_progress += ['Java']
+student = Student('Иван', 'Попов', 'М')
+student.courses_in_progress += ['Java']
+print(student)
 
-best_lec = Lecturer('Роман', 'Романович')
-best_lec.courses_attached += ['Excel']
-best_lec.courses_attached += ['Java']
- 
-best_student.rate_lecturer(best_lec, 'Excel', 9)
-best_student.rate_lecturer(best_lec, 'Java', 9)
-best_student.rate_lecturer(best_lec, 'Python', 10)
+lecturer = Lecturer('Роман', 'Романов')
+lecturer.courses_attached += ['Java']
 
-print(best_lec.grades)
+student.rate_lecturer(lecturer, 'Java', 9)
+
+print()
+
+print(lecturer.grades)
