@@ -22,8 +22,7 @@ class Student:
         for course in self.grades.values():
             sum_rating += sum(course)
             len_rating += len(course)
-        average_rating = round(sum_rating / len_rating, 2)
-        return average_rating
+        return round(sum_rating / len_rating, 2)
 
     def av_rating_for_course(self, course):
         sum_rating = 0
@@ -32,12 +31,10 @@ class Student:
             if lesson == course:
                 sum_rating += sum(self.grades[course])
                 len_rating += len(self.grades[course])
-        average_rating = round(sum_rating / len_rating, 2)
-        return average_rating
+        return round(sum_rating / len_rating, 2)
 
     def __str__(self):
-        res = f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за домашние задания: {self.av_rating()}\nКурсы в процессе изучения: {", ".join(self.courses_in_progress)}\nЗавершенные курсы: {", ".join(self.finished_courses)}\n'
-        return res
+        return f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за домашние задания: {self.av_rating()}\nКурсы в процессе изучения: {", ".join(self.courses_in_progress)}\nЗавершенные курсы: {", ".join(self.finished_courses)}\n'
 
     def __lt__(self, other):
         if not isinstance(other, Student):
@@ -62,8 +59,7 @@ class Lecturer(Mentor):
         for course in self.grades.values():
             sum_rating += sum(course)
             len_rating += len(course)
-        average_rating = round(sum_rating / len_rating, 2)
-        return average_rating
+        return round(sum_rating / len_rating, 2)
 
     def av_rating_for_course(self, course):
         sum_rating = 0
@@ -72,12 +68,10 @@ class Lecturer(Mentor):
             if lesson == course:
                 sum_rating += sum(self.grades[course])
                 len_rating += len(self.grades[course])
-        average_rating = round(sum_rating / len_rating, 2)
-        return average_rating   
+        return round(sum_rating / len_rating, 2)   
 
     def __str__(self):
-        res = f"Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self.av_rating()}\n"
-        return res
+        return f"Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self.av_rating()}\n"
     
     def __lt__(self, other):
         if not isinstance(other, Lecturer):
@@ -100,8 +94,7 @@ class Reviewer(Mentor):
             return 'Ошибка'
     
     def __str__(self):
-        res = f'Имя: {self.name} \nФамилия: {self.surname}\n'
-        return res
+        return f'Имя: {self.name} \nФамилия: {self.surname}\n'
 
 
 # Студенты
@@ -157,8 +150,7 @@ def average_rating_for_course(course, student_list):
             stud_sum_rating = stud.av_rating_for_course(course)
             sum_rating += stud_sum_rating
             quantity_rating += 1
-    average_rating = round(sum_rating / quantity_rating, 2)
-    return average_rating
+    return round(sum_rating / quantity_rating, 2)
 
 
 print(average_rating_for_course('Python', student_list))
